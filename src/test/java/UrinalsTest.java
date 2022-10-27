@@ -13,7 +13,13 @@ class UrinalsTest {
 
     @Test
     void goodStringTestCase2() {
-        System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST ONE EXECUTED =======");
+        System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST TWO EXECUTED =======");
         Assertions.assertEquals(false,Urinals.goodString(""));
+    }
+
+    @Test
+    void goodStringTestCase3() {
+        System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST THREE EXECUTED =======");
+        Assertions.assertEquals(false,Urinals.goodString("01011"));
     }
 }

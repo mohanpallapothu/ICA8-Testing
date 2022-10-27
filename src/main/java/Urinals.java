@@ -12,6 +12,13 @@ public class Urinals {
         if(str.length() < 1)
             return false;
 
+        for(int i = 0 ; i < str.length()-1; i++)
+        {
+            if(str.charAt(i) == '1' && str.charAt(i+1) =='1')
+                return false;
+        }
+
+
         for(int i = 0 ; i < str.length(); i++)
         {
             if(str.charAt(i) != '1'|| str.charAt(i) != '0')
