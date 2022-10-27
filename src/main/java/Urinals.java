@@ -7,7 +7,11 @@
 
 public class Urinals {
 
-    public static Boolean goodString( String str ) {  // checks to see if valid string
+    public static Boolean goodString( String str ) {
+
+        if(str.length() < 1)
+            return false;
+
         for(int i = 0 ; i < str.length(); i++)
         {
             if(str.charAt(i) != '1'|| str.charAt(i) != '0')
