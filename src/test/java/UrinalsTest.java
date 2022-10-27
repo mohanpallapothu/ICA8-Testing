@@ -22,4 +22,10 @@ class UrinalsTest {
         System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST THREE EXECUTED =======");
         Assertions.assertEquals(false,Urinals.goodString("01011"));
     }
+
+    @Test
+    void goodStringTestCase4() {
+        System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST FOUR (FILE NOT FOUND) EXECUTED =======");
+        Assertions.assertThrows(FileNotFoundException.class, () -> Urinals.openFile("Testing_Empty_Path"));
+    }
 }
