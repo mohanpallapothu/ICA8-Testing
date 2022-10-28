@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UrinalsTest {
@@ -27,5 +29,11 @@ class UrinalsTest {
     void goodStringTestCase4() {
         System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST FOUR (FILE NOT FOUND) EXECUTED =======");
         Assertions.assertThrows(FileNotFoundException.class, () -> Urinals.openFile("Testing_Empty_Path"));
+    }
+
+    @Test
+    void goodStringTestCase5() {
+        System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST FIVE EXECUTED =======");
+        Assertions.assertThrows(NumberFormatException.class, () -> Urinals.openFile("ICA8-Testing-File.dat"));
     }
 }

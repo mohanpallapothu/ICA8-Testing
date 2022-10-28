@@ -1,6 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Title:JUnit Testing
@@ -12,35 +12,44 @@ import java.util.Scanner;
 public class Urinals {
 
     public static void openFile(String path) throws FileNotFoundException {
+        List<String> testCases = new ArrayList<>();
 
-            File file = new File(path);
-            Scanner testCases = new Scanner(file);
-            while (testCases.hasNextLine()) {
-                String testCase = testCases.nextLine();
+        File file = new File(path);
+            Scanner cases = new Scanner(file);
+            while (cases.hasNextLine()) {
+                String testCase = cases.nextLine();
+                if(!goodString(testCase))
+                    throw new NumberFormatException();
                 if(testCase.equals("-1"))
-                    testCases.close();
+                    cases.close();
+                testCases.add(testCase);
                 goodString(testCase);
             }
-            testCases.close();
+            cases.close();
 
     }
     public static Boolean goodString( String str ) {
-
-        if(str.length() < 1)
+        Set<String> req = new HashSet<>();
+        req.add("0");
+        req.add("1");
+        if(str.length() < 1 || str.length() > 20)
             return false;
 
         for(int i = 0 ; i < str.length()-1; i++)
         {
             if(str.charAt(i) == '1' && str.charAt(i+1) =='1')
+            {
+                System.out.println("returning false loop1");
                 return false;
+            }
         }
 
         for(int i = 0 ; i < str.length(); i++)
         {
-            if(str.charAt(i) != '1'|| str.charAt(i) != '0')
-                return true;
+            if(!req.contains(Character.toString(str.charAt(i))))
+                return false;
         }
-        return false;
+        return true;
     }
 
 }
