@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,4 +55,12 @@ class UrinalsTest {
         System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST EIGHT EXECUTED =======");
         Assertions.assertEquals(false,Urinals.goodString("010101010101010000001"));
     }
+
+    @Test
+    void goodStringTestCase9() throws EmptyFileException, IOException {
+        System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST NINE EXECUTED =======");
+        Assertions.assertEquals(true,Urinals.openFile("urinal.dat"));
+    }
+
+
 }
