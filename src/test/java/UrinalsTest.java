@@ -22,7 +22,7 @@ class UrinalsTest {
     @Test
     void goodStringTestCase3() {
         System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST THREE EXECUTED =======");
-        Assertions.assertEquals(false,Urinals.goodString("01011"));
+        Assertions.assertEquals(true,Urinals.goodString("0101010101010"));
     }
 
     @Test
@@ -41,5 +41,17 @@ class UrinalsTest {
     void goodStringTestCase6() {
         System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST SIX EXECUTED =======");
         Assertions.assertThrows(EmptyFileException.class, () -> Urinals.openFile("EmptyFile.dat"));
+    }
+
+    @Test
+    void goodStringTestCase7() {
+        System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST SEVEN EXECUTED =======");
+        Assertions.assertEquals(false,Urinals.goodString("010101010101010101010101010101010101010101010101010101010100000000001"));
+    }
+
+    @Test
+    void goodStringTestCase8() {
+        System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST EIGHT EXECUTED =======");
+        Assertions.assertEquals(false,Urinals.goodString("010101010101010000001"));
     }
 }
