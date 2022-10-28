@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 /**
  * Title:JUnit Testing
- *
  * @author Venkata Sai Mohan Kumar Pallapothu
  * @version 1.0
  */
@@ -109,14 +108,14 @@ public class Urinals {
     public static Boolean writeFile(List<Integer> outputStream) throws IOException {
 
         String outputFileName = "rule.txt";
-        File folder = new File(".");
-        List<String> outputFileNames = Arrays.stream(folder.listFiles()).map(file -> file.getName())
+        File newFile = new File(".");
+        List<String> outputFileNames = Arrays.stream(newFile.listFiles()).map(file -> file.getName())
                 .filter(name -> name.matches("rule.*.txt")).sorted().collect(Collectors.toList());
         if (!outputFileNames.isEmpty()) {
             String highest = outputFileNames.get(outputFileNames.size() - 1);
-            String numberValue = highest.substring(4, highest.length() - 4);
-            if (numberValue.length() > 0)
-                outputFileName = String.format("rule%d.txt", Integer.parseInt(numberValue) + 1);
+            String length = highest.substring(4, highest.length() - 4);
+            if (length.length() > 0)
+                outputFileName = String.format("rule%d.txt", Integer.parseInt(length) + 1);
             else
                 outputFileName = "rule1.txt";
 
