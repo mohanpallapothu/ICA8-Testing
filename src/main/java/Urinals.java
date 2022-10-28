@@ -24,10 +24,10 @@ public class Urinals {
         Scanner cases = new Scanner(file);
         while (cases.hasNextLine()) {
             String testCase = cases.nextLine();
-            if (!numberTest(testCase))
-                throw new NumberFormatException();
             if (testCase.equals("-1"))
                 break;
+            if (!numberTest(testCase))
+                throw new NumberFormatException();
             testCases.add(testCase);
         }
         cases.close();
@@ -50,8 +50,8 @@ public class Urinals {
                 return false;
         }
 
-//        if (!numberTest(str))
-//            return false;
+        if (!numberTest(str))
+            return false;
         return true;
     }
 
@@ -106,14 +106,25 @@ public class Urinals {
 
     }
 
-    public static Boolean writeFile(List<Integer> values) throws IOException {
+    public static Boolean writeFile(List<Integer> outputStream) throws IOException {
 
-        String outName = "rule.txt";
+        String outputFileName = "rule.txt";
+        File folder = new File(".");
+        List<String> outputFileNames = Arrays.stream(folder.listFiles()).map(file -> file.getName())
+                .filter(name -> name.matches("rule.*.txt")).sorted().collect(Collectors.toList());
+        if (!outputFileNames.isEmpty()) {
+            String highest = outputFileNames.get(outputFileNames.size() - 1);
+            String numberValue = highest.substring(4, highest.length() - 4);
+            if (numberValue.length() > 0)
+                outputFileName = String.format("rule%d.txt", Integer.parseInt(numberValue) + 1);
+            else
+                outputFileName = "rule1.txt";
 
+        }
 
-            FileWriter file = new FileWriter(outName);
-            for (Integer x : values) {
-                file.write(x.toString() + "\n");
+          FileWriter file = new FileWriter(outputFileName);
+            for (Integer output : outputStream) {
+                file.write(output.toString() + "\n");
             }
             file.close();
             return true;
