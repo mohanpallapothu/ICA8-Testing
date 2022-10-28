@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Urinals {
 
-    public static void openFile(String path) throws FileNotFoundException {
+    public static void openFile(String path) throws FileNotFoundException, EmptyFileException {
         List<String> testCases = new ArrayList<>();
 
         File file = new File(path);
@@ -26,6 +26,9 @@ public class Urinals {
                 goodString(testCase);
             }
             cases.close();
+         if(testCases.size() == 0){
+             throw new EmptyFileException();
+         }
 
     }
     public static Boolean goodString( String str ) {

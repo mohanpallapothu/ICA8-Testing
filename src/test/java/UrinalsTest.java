@@ -36,4 +36,10 @@ class UrinalsTest {
         System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST FIVE EXECUTED =======");
         Assertions.assertThrows(NumberFormatException.class, () -> Urinals.openFile("ICA8-Testing-File.dat"));
     }
+
+    @Test
+    void goodStringTestCase6() {
+        System.out.println("====== Venkata Sai Mohan Kumar Pallapothu == TEST SIX EXECUTED =======");
+        Assertions.assertThrows(EmptyFileException.class, () -> Urinals.openFile("EmptyFile.dat"));
+    }
 }
